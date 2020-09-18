@@ -8,7 +8,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_main.*
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -21,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         val valueSolidarity = findViewById<TextView>(R.id.solidarity_value)
         val valueClaimLeater = findViewById<TextView>(R.id.claim_leater_value)
         val totalValue = findViewById<TextView>(R.id.total_value)
+
+        getDolarValue()
 
         valueInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -93,6 +102,29 @@ class MainActivity : AppCompatActivity() {
             return results
 
         }
+    }
+
+    private fun getDolarValue(){
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+
+// Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                // Display the first 500 characters of the response string.
+                val sType = object : TypeToken<List<DolarHomeModel>>() { }.type
+                val otherList = Gson().fromJson<List<DolarHomeModel>>(response, sType)
+                    volley_value.text = otherList.get(0).casa?.compra
+            },
+            Response.ErrorListener {
+                volley_value.text = "ERROR"
+            })
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest)
+
     }
 }
 
