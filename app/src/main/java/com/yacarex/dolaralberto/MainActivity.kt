@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val values: ArrayList<String> = fillValues(valueInput.text.toString().toDouble())
+
+                val input = if(valueInput.text.toString().isEmpty()) 0.0 else valueInput.text.toString().toDouble()
+                val values: ArrayList<String> = fillValues(input)
                 valueSolidarity.text = values.get(0)
                 valueClaimLeater.text = values.get(1)
                 totalValue.text = values.get(2)
@@ -66,20 +68,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun fillValues(number: Double): ArrayList<String> {
         val results: ArrayList<String>
-        if ((number <= 0) || number == null ) {
+        if ((number <= 0) || number == null) {
 
             results = ArrayList(3)
-            results.add(0, "AR$ ${R.string.value_empty}")
-            results.add(1, "AR$ ${R.string.value_empty}")
-            results.add(2, "AR$ ${R.string.value_empty}")
+            results.add(0, "AR$ " + getString(R.string.value_empty))
+            results.add(1, "AR$ " + getString(R.string.value_empty))
+            results.add(2, "AR$ " + getString(R.string.value_empty))
             return results
 
         } else if (number > 200) {
 
             results = ArrayList(3)
-            results.add(0, "AR$ ${R.string.value_empty}")
-            results.add(1, "AR$ ${R.string.value_empty}")
-            results.add(2, R.string.value_exceded.toString())
+            results.add(0, "AR$ " + getString(R.string.value_empty))
+            results.add(1, "AR$ " + getString(R.string.value_empty))
+            results.add(2, getString(R.string.value_exceded))
             return results
 
         } else {
