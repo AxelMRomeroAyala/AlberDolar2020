@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">DolarAlberto</string>
+
+    <string name="currency_usa">U$S</string>
+    <string name="currency_arg">AR$</string>
+
+    <!-- Interfaz   -->
+    <string name="text_question_usa">Cuantos U$D queres comprar?</string>
+    <string name="hint_input_value">Ingrese Valor</string>
+
+    <!-- Results -->
+
+    <string name="text_total">Valor Total</string>
+    <string name="text_solidarity">Solidaridad: </string>
+    <string name="text_claim_leater">Despues te devuelvo: </string>
+
+    <!-- Auto Fill-->
+
+    <string name="value_empty">AR$ 0.00</string>
+    <string name="value_exceded">Eso no se puede amiguito</string>
+
 </resources>
