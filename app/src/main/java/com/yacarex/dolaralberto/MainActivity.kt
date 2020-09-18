@@ -24,17 +24,18 @@ class MainActivity : AppCompatActivity() {
 
         valueInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                valueSolidarity.text = fillValues(valueInput.text.toString().toDouble()).get(0)
-                valueClaimLeater.text = fillValues(valueInput.text.toString().toDouble()).get(1)
-                totalValue.text = fillValues(valueInput.text.toString().toDouble()).get(2)
+                val values: ArrayList<String> = fillValues(valueInput.text.toString().toDouble())
+                valueSolidarity.text = values.get(0)
+                valueClaimLeater.text = values.get(1)
+                totalValue.text = values.get(2)
             }
 
             override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
+
             }
 
         })
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             results.set(0, "AR$ ${R.string.value_empty}")
             results.set(1, "AR$ ${R.string.value_empty}")
             results.set(2, "AR$ ${R.string.value_empty}")
+            return results
 
         } else if (number > 200) {
 
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             results.set(0, "AR$ ${R.string.value_empty}")
             results.set(1, "AR$ ${R.string.value_empty}")
             results.set(2, R.string.value_exceded.toString())
+            return results
 
         } else {
 
@@ -85,10 +88,9 @@ class MainActivity : AppCompatActivity() {
             results.set(0, "AR$ ${getSolidarity(number)}")
             results.set(1, "AR$ ${getClaimLeater(number)}")
             results.set(2, "AR$ ${getTotal(number)}")
+            return results
 
         }
-
-        return results
     }
 }
 
