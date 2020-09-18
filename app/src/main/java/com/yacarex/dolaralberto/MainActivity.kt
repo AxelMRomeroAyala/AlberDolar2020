@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         val valueInput = findViewById<TextView>(R.id.input_value)
         val valueSolidarity = findViewById<TextView>(R.id.solidarity_value)
-        val valueClaimLeater = findViewById<TextView>(R.id.solidarity_value)
+        val valueClaimLeater = findViewById<TextView>(R.id.claim_leater_value)
         val totalValue = findViewById<TextView>(R.id.total_value)
 
         valueInput.addTextChangedListener(object : TextWatcher {
@@ -66,28 +66,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun fillValues(number: Double): ArrayList<String> {
         val results: ArrayList<String>
-        if (number <= 0) {
+        if ((number <= 0) || number == null ) {
 
             results = ArrayList(3)
-            results.set(0, "AR$ ${R.string.value_empty}")
-            results.set(1, "AR$ ${R.string.value_empty}")
-            results.set(2, "AR$ ${R.string.value_empty}")
+            results.add(0, "AR$ ${R.string.value_empty}")
+            results.add(1, "AR$ ${R.string.value_empty}")
+            results.add(2, "AR$ ${R.string.value_empty}")
             return results
 
         } else if (number > 200) {
 
             results = ArrayList(3)
-            results.set(0, "AR$ ${R.string.value_empty}")
-            results.set(1, "AR$ ${R.string.value_empty}")
-            results.set(2, R.string.value_exceded.toString())
+            results.add(0, "AR$ ${R.string.value_empty}")
+            results.add(1, "AR$ ${R.string.value_empty}")
+            results.add(2, R.string.value_exceded.toString())
             return results
 
         } else {
 
             results = ArrayList(3)
-            results.set(0, "AR$ ${getSolidarity(number)}")
-            results.set(1, "AR$ ${getClaimLeater(number)}")
-            results.set(2, "AR$ ${getTotal(number)}")
+            results.add(0, "AR$ ${getSolidarity(number)}")
+            results.add(1, "AR$ ${getClaimLeater(number)}")
+            results.add(2, "AR$ ${getTotal(number)}")
             return results
 
         }
