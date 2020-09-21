@@ -1,18 +1,20 @@
 <resources>
     <string name="app_name">DolarAlberto</string>
 
-    <string name="currency_usa">U$S</string>
+    <string name="currency_usa">U$D</string>
     <string name="currency_arg">AR$</string>
 
     <!-- Interfaz   -->
     <string name="text_question_usa">Cuantos U$D queres comprar?</string>
+    <string name="text_conversion">U$D 1 = AR$ </string>
     <string name="hint_input_value">Ingrese Valor</string>
 
     <!-- Results -->
 
     <string name="text_total">Valor Total</string>
     <string name="text_solidarity">Solidaridad: </string>
-    <string name="text_claim_leater">Despues te devuelvo: </string>
+    <string name="text_claim_later">Despues te devuelvo: </string>
+    <string name="text_official_clean">Oficial Limpio: </string>
 
     <!-- Auto Fill-->
 
