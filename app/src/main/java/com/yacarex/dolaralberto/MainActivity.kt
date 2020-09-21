@@ -6,14 +6,15 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
-import androidx.core.view.size
 import com.android.volley.toolbox.Volley
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.spinner_item.view.*
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var option: Spinner
     lateinit var selectedCurrency: String
-    lateinit var exchange: String
+    private lateinit var mAdView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,13 @@ class MainActivity : AppCompatActivity() {
         val totalValue = findViewById<TextView>(R.id.total_value)
 
         getDolarValue()
-//        exchange = volley_value.text.toString().replace(",", ".")
+
+        MobileAds.initialize(this) {}
+
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().addTestDevice("7790A97E03F01714C1A757BAC702560D").build()
+        mAdView.loadAd(adRequest)
+
 
         option = findViewById(R.id.currency)
         val options = arrayOf(
@@ -98,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         return getOfficial(input) + getSolidarity(input) + getClaimLater(input)
     }
 
-    private fun getUsdTotal(input: Double): Double? {
+    private fun getUsdTotal(input: Double): Double {
         val conversion = volley_value.text.toString().replace(",", ".", false).toDouble()
         return (input / 1.65) / conversion
     }
@@ -123,7 +130,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getSolidarityInverted(input: Double): Double {
-        return getSolidarity(getUsdTotal(input)!!)
+        return getSolidarity(getUsdTotal(input))
     }
 
     private fun getClaimLater(input: Double): Double {
@@ -131,7 +138,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getClaimLaterInverted(input: Double): Double {
-        return getOfficial(getUsdTotal(input)!!) * 0.35
+        return getOfficial(getUsdTotal(input)) * 0.35
     }
 
     private fun fillValues(number: Double, currency: String): ArrayList<String> {
@@ -150,7 +157,7 @@ class MainActivity : AppCompatActivity() {
             return results
 
         } else if ((currency == getString(R.string.currency_usa) && number > 200) ||
-            currency == getString(R.string.currency_arg) && getUsdTotal(number)!!.toDouble() > 200
+            currency == getString(R.string.currency_arg) && getUsdTotal(number) > 200
         ) {
 
             results = ArrayList(4)
@@ -199,19 +206,34 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.currency_arg) -> {
                     results.add(
                         0,
-                        getString(R.string.currency_arg) + " " + getOfficialInverted(number)
+                        getString(R.string.currency_arg) + " " + BigDecimal(
+                            getOfficialInverted(
+                                number
+                            )
+                        ).setScale(2, RoundingMode.CEILING).toString()
                     )
                     results.add(
                         1,
-                        getString(R.string.currency_arg) + " " + getSolidarityInverted(number)
+                        getString(R.string.currency_arg) + " " + BigDecimal(
+                            getSolidarityInverted(
+                                number
+                            )
+                        ).setScale(2, RoundingMode.CEILING).toString()
                     )
                     results.add(
                         2,
-                        getString(R.string.currency_arg) + " " + getClaimLaterInverted(number)
+                        getString(R.string.currency_arg) + " " + BigDecimal(
+                            getClaimLaterInverted(
+                                number
+                            )
+                        ).setScale(2, RoundingMode.CEILING).toString()
                     )
                     results.add(
                         3,
-                        getString(R.string.currency_usa) + " " + getUsdTotal(number)
+                        getString(R.string.currency_usa) + " " + BigDecimal(getUsdTotal(number)).setScale(
+                            2,
+                            RoundingMode.CEILING
+                        ).toString()
                     )
                 }
 
