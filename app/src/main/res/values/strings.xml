@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DolarAlberto</string>
+    <string name="app_name">Dolalber</string>
 
     <string name="currency_usa">U$D</string>
     <string name="currency_arg">AR$</string>
@@ -13,7 +13,7 @@
 
     <string name="text_total">Valor Total</string>
     <string name="text_solidarity">Solidaridad: </string>
-    <string name="text_claim_later">Despues te devuelvo: </string>
+    <string name="text_claim_later">Después te devuelvo: </string>
     <string name="text_official_clean">Oficial Limpio: </string>
 
     <!-- Auto Fill-->

@@ -3,6 +3,7 @@ package com.yacarex.dolaralberto
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.Selection
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this) {}
 
         mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder().addTestDevice("7790A97E03F01714C1A757BAC702560D").build()
         mAdView.loadAd(adRequest)
 
 
@@ -83,8 +84,16 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 val input =
-                    if (valueInput.text.toString().isEmpty()) 0.0 else valueInput.text.toString()
-                        .toDouble()
+                    if (valueInput.text.toString().isEmpty()) {
+                        0.0
+                    } else if (valueInput.text.toString().startsWith(".")) {
+                        val decimalValue = "0" + valueInput.text.toString()
+                        decimalValue.toDouble()
+                    } else {
+                        valueInput.text.toString()
+                            .toDouble()
+                    }
+
                 val values: ArrayList<String> = fillValues(input, selectedCurrency)
                 valueOfficialClean.text = values[0]
                 valueSolidarity.text = values[1]

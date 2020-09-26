@@ -7,169 +7,172 @@
     android:gravity="center_horizontal"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:id="@+id/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/dolalber_maintitle"
-        />
+        android:src="@drawable/dolalber_maintitle" />
+
+
+
+
 
     <RelativeLayout
         android:id="@+id/mid_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#99FFFFFF"
-        android:layout_below="@+id/app_name">
-
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-        android:text="@string/text_question_usa"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffffff"/>
-
-
-
-    <LinearLayout
-        android:id="@+id/input_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:background="#CCffffff">
-
-
-
-        <Spinner
-            android:id="@+id/currency"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="24sp" />
-
-
-        <EditText
-            android:id="@+id/input_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints="0.00"
-            android:hint="@string/hint_input_value"
-            android:inputType="number|numberDecimal"
-            android:singleLine="true"
-            android:textSize="24sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/conversion_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/input_field"
-        android:paddingBottom="5dp"
-        android:layout_marginBottom="25dp"
-        android:background="#CCFFFFFF"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_below="@+id/app_name"
+        android:background="#99FFFFFF">
 
         <TextView
-            android:id="@+id/conversion"
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:text="@string/text_question_usa"
+            android:textColor="#ffffff" />
+
+
+        <LinearLayout
+            android:id="@+id/input_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question"
+            android:background="#CCffffff"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+
+            <Spinner
+                android:id="@+id/currency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="24sp" />
+
+
+            <EditText
+                android:id="@+id/input_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="0.00"
+                android:hint="@string/hint_input_value"
+                android:inputType="number|numberDecimal"
+                android:singleLine="true"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/conversion_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_field"
+            android:layout_marginBottom="25dp"
+            android:background="#CCFFFFFF"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/conversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_conversion"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/volley_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/official_clean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_conversion"
+            android:layout_below="@+id/conversion_field"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            android:text="@string/text_official_clean"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/volley_value"
+            android:id="@+id/official_clean_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/conversion_field"
+            android:layout_alignBaseline="@+id/official_clean"
+            android:layout_alignStart="@+id/claim_later_value"
+            android:layout_alignLeft="@+id/claim_later_value"
+            android:layout_toEndOf="@+id/solidarity"
+            android:layout_toRightOf="@+id/solidarity"
+            android:textSize="18sp"
+            tools:ignore="TextViewEdits" />
+
+
+        <TextView
+            android:id="@id/solidarity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/official_clean"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_solidarity"
             android:textSize="18sp" />
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/official_clean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/conversion_field"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:text="@string/text_official_clean"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/solidarity_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/official_clean"
+            android:layout_alignBaseline="@+id/solidarity"
+            android:layout_alignStart="@+id/claim_later_value"
+            android:layout_alignLeft="@+id/claim_later_value"
+            android:layout_toEndOf="@+id/solidarity"
+            android:layout_toRightOf="@+id/solidarity"
+            android:textSize="18sp"
+            tools:ignore="TextViewEdits" />
 
-    <TextView
-        android:id="@+id/official_clean_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/conversion_field"
-        android:layout_alignBaseline="@+id/official_clean"
-        android:layout_alignStart="@+id/claim_later_value"
-        android:layout_alignLeft="@+id/claim_later_value"
-        android:layout_toEndOf="@+id/solidarity"
-        android:layout_toRightOf="@+id/solidarity"
-        android:textSize="18sp"
-        tools:ignore="TextViewEdits" />
+        <TextView
+            android:id="@+id/claim_leater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/solidarity"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/text_claim_later"
+            android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/claim_later_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/solidarity"
+            android:layout_alignBaseline="@id/claim_leater"
+            android:layout_toEndOf="@+id/claim_leater"
+            android:layout_toRightOf="@+id/claim_leater"
+            android:gravity="end"
+            android:textAlignment="textEnd"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@id/solidarity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/official_clean"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:text="@string/text_solidarity"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/solidarity_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/official_clean"
-        android:layout_alignBaseline="@+id/solidarity"
-        android:layout_alignStart="@+id/claim_later_value"
-        android:layout_alignLeft="@+id/claim_later_value"
-        android:layout_toEndOf="@+id/solidarity"
-        android:layout_toRightOf="@+id/solidarity"
-        android:textSize="18sp"
-        tools:ignore="TextViewEdits" />
-
-    <TextView
-        android:id="@+id/claim_leater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="25dp"
-        android:layout_marginHorizontal="25dp"
-        android:layout_below="@id/solidarity"
-        android:text="@string/text_claim_later"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/claim_later_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/solidarity"
-        android:layout_toEndOf="@+id/claim_leater"
-        android:layout_toRightOf="@+id/claim_leater"
-        android:layout_alignBaseline="@id/claim_leater"
-        android:gravity="end"
-        android:textAlignment="textEnd"
-        android:textSize="18sp" />
-
-</RelativeLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mid_content"
+        android:background="#99000000"
         android:gravity="center"
-        android:orientation="vertical"
-        android:background="#99000000">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/total"
@@ -177,8 +180,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/text_total"
-            android:textSize="14sp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/total_value"
@@ -186,15 +189,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:textSize="36sp"
-            android:textColor="#ffffff"/>
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="36sp" />
 
 
     </LinearLayout>
 
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
