@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_checked="false"
+        android:drawable="@drawable/semi_rounded_shape_outline" /> <!-- pressed -->
+    <item android:state_checked="true"
+        android:drawable="@drawable/semi_rounded_shape" /> <!-- focused -->
+
+
+</selector>

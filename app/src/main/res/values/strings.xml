@@ -6,6 +6,10 @@
     <string name="titlebar">Titlebar</string>
 
     <!-- Interfaz   -->
+    <string name="mode_button_direct">Directo</string>
+    <string name="mode_button_credit">Tarjeta</string>
+    <string name="mode_button_digital">Digital</string>
+
     <string name="mode_text_direct_buy">Compra directa en Banco</string>
     <string name="mode_text_credit_card">Compras en el exterior</string>
     <string name="mode_text_digital_services">Costo de Servicios Digitales</string>
