@@ -3,18 +3,30 @@
 
     <string name="currency_usa">U$D</string>
     <string name="currency_arg">AR$</string>
+    <string name="titlebar">Titlebar</string>
 
     <!-- Interfaz   -->
-    <string name="text_question_usa">Cuantos U$D queres comprar?</string>
+    <string name="mode_text_direct_buy">Compra directa en Banco</string>
+    <string name="mode_text_credit_card">Compras en el exterior</string>
+    <string name="mode_text_digital_services">Costo de Servicios Digitales</string>
     <string name="text_conversion">U$D 1 = AR$ </string>
     <string name="hint_input_value">Ingrese Valor</string>
 
     <!-- Results -->
 
-    <string name="text_total">Valor Total</string>
+    <string name="total_direct_usd_ars">Te costará</string>
+    <string name="total_direct_ars_usd">Podés comprar</string>
+    <string name="total_credit">En el resumen te vendrá</string>
+    <string name="total_digital">Terminarías pagando</string>
+
+    <string name="text_warning">El próximo mes podrás comprar U$D</string>
+    <string name="text_blessing">Sos un buén ciudadano</string>
+
     <string name="text_solidarity">Solidaridad: </string>
-    <string name="text_claim_later">Después te devuelvo: </string>
+    <string name="text_claim_later">A cuenta ganancias: </string>
     <string name="text_official_clean">Oficial Limpio: </string>
+    <string name="text_iva">IVA: </string>
+
 
     <!-- Auto Fill-->
 
